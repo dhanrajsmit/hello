@@ -1,0 +1,97 @@
+
+
+
+<nav class="sidebar p-1 pr-0" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <!-- Filters & Plans Names Section -->
+    <div class="list-group p-2">
+        <!-- Filter Section -->
+        <div class="d-flex align-items-center list-group-item p-1 w-100 border-bottom">
+            <div class="w-50">
+                <p class="m-0 d-flex active-plan-text">
+                    <span class="d-flex align-items-center">
+                        <i class="fa fa-address-book mx-1"></i>
+                    </span>
+                    <span class="d-flex align-items-center mr-4">Active Plans</span>
+                </p>
+            </div>
+            <div class="filter-section w-100">
+                <form >
+                    <div class="input-group">
+                        <input type="text" class="form-control search-bar" placeholder="Search" name="search">
+                        <div class="input-group-btn d-flex align-items-center">
+                        <button class="btn btn-default p-0 d-flex justify-content-center search-icon-button" type="submit"><i class="fa fa-search mx-1" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Plans List -->
+        <div class="plans-list py-1">
+            <div class="plan-names">
+                <p class="m-0 px-3 py-2 active">Arizona HS Report Plan 0</p>
+                <p class="m-0 px-3 py-2" (click)="ActivePlanClick()">Arizona HS Report Plan 1</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 2</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 3</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 4</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 5</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 6</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 7</p>
+                <p class="m-0 px-3 py-2">Arizona HS Report Plan 8</p>               
+            </div>
+        </div>
+    </div>
+
+        <!-- Portfolio Activities -->
+        <div class="list-group px-2 py-1 my-1">
+        <div class="d-flex align-items-center list-group-item w-100 p-0 my-1 activity-section">
+                <div class="w-100">
+                        <div class="navbar-header d-flex align-items-center w-100 py-1">
+                                <a class="navbar-brand w-100 mx-2">Portfolio Activities</a>
+                            <button type="button" class="navbar-toggle d-flex align-items-center mx-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><i class="fa fa-caret-up m-0" aria-hidden="true"></i>                 
+                            </button>                 
+                        </div>
+                        <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                    <!-- <a data-toggle="collapse" data-target=".in" class="d-flex align-items-center p-1" >  -->
+                                <li ><a data-target=".in" class="d-flex align-items-center p-1"><input type="checkbox" aria-label="Checkbox for following text input" class="mx-2">
+                                    <span>Career Cluster Inventory</span></a>               
+                                </li>
+                                <li ><a data-target=".in" class="d-flex align-items-center p-1"><input type="checkbox" aria-label="Checkbox for following text input" class="mx-2">
+                                    <span>Reality Check</span></a>           
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+        </div>
+         <!-- Grade Level -->
+        <div class="d-flex align-items-center list-group-item w-100 p-0 my-1 activity-section">
+                <div class="w-100">
+                        <div class="navbar-header d-flex align-items-center w-100 py-1">
+                                <a class="navbar-brand w-100 mx-2">Grade Level</a>
+                            <button type="button" class="navbar-toggle d-flex align-items-center mx-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"><i class="fa fa-caret-up m-0" aria-hidden="true"></i>                 
+                            </button>                 
+                        </div>
+                        <div class="navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li ><a data-target=".in" class="d-flex align-items-center p-1"><input type="checkbox" aria-label="Checkbox for following text input" class="mx-2">
+                                    <span>5</span></a>                 
+                                </li>
+                                <!-- <a data-toggle="collapse" data-target=".in" class="d-flex align-items-center p-1" ></a>  -->
+                                <li ><a data-target=".in" class="d-flex align-items-center p-1"><input type="checkbox" aria-label="Checkbox for following text input" class="mx-2">
+                                    <span>6</span></a>            
+                                </li>
+                                <li ><a data-target=".in" class="d-flex align-items-center p-1"><input type="checkbox" aria-label="Checkbox for following text input" class="mx-2">
+                                    <span>7</span>    </a>            
+                                </li>
+                                <li ><a data-target=".in" class="d-flex align-items-center p-1"><input type="checkbox" aria-label="Checkbox for following text input" class="mx-2">
+                                    <span>8</span> </a>         
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+   
+
+</nav>

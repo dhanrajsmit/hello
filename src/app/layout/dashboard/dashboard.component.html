@@ -1,0 +1,181 @@
+<!-- Dashboard Section -->
+<div class="dashboard-section">
+        <!-- Plan View Section -->
+        <p class="text-muted plan-text">Current Plan:  <span class="text-primary font-weight-bold">Arizona HS Report</span></p>
+        <div class="container"> 
+                        <div class="row d-flex">     
+                          <div class="col-lg-4 col-md-6 p-0 my-1">
+                                <div class="text-center border-right p-2">
+                                <div>
+                                <p class="my-1">Overall Progress</p>
+                                <div class="canvas-chart my-3">
+                            
+                                </div>
+                                <p class="my-1">39 of 229</p>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 p-0  my-1">
+                                <div class="text-center border-right p-2">
+                                <div>
+                                <p class="my-1">Overall Progress</p>
+                                <div class="canvas-chart my-3">
+                            
+                                </div>
+                                <p class="my-1">39 of 229</p>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 p-0  my-1">
+                                <div class="text-center border-right p-2">
+                                <div>
+                                <p class="my-1">Overall Progress</p>
+                                <div class="canvas-chart my-3">
+                            
+                                </div>
+                                <p class="my-1">39 of 229</p>
+                                </div>
+                                </div> 
+                        </div>
+                      </div>
+                </div>
+        <!-- Table & Page Navigation Section -->
+                <div class="table-pagenav-section my-2 d-flex align-items-center px-2">
+                <!-- Search Section -->
+                <div class="table-search-section w-100">
+                <form class="d-flex align-items-center">
+                <button type="submit" class="search-icon" (click)="SearchButtonClicked()"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Search.." name="search" class="search-bar">{{searchField}}                
+                </form>
+                </div>
+                <!-- page navigation -->
+                 <div class="page-navigation d-flex align-items-center justify-content-center">
+                        <nav aria-label="..." class="pagenation-section m-1">
+                                <ul class="pagination my-1">
+                                        <li class="page-item">
+                                        <span class="page-link">First</span>
+                                        </li>
+                                        <li class="page-item">
+                                        <span class="page-link">Previous</span>
+                                        </li>
+                                        <li class="page-item ">
+                                        <a class="page-link active" href="#">1</a>
+                                        </li>
+                                        <li class="page-item ">
+                                        <span class="page-link">2<span class="sr-only">(current)</span></span>
+                                        </li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#">4</a>
+                                        </li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#">5</a>
+                                        </li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                        </li>
+                                        <li class="page-item">
+                                        <span class="page-link">Last</span>
+                                        </li>
+                                </ul>
+                         </nav>
+                </div>
+                <!-- page content -->     
+                <div class="page-content-show">
+                <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle page-data-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Page size: 10
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">10</a>
+                                <a class="dropdown-item" href="#">15</a>
+                                <a class="dropdown-item" href="#">20</a>
+                        </div>
+                </div>
+                </div>
+                <!-- PDF & Excel Buttons -->
+                <div class="d-flex align-items-center justify-content-center common-button">
+                        <div class="w-50 d-flex align-items-center justify-content-center">
+                        <button class="pdf-btn red"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                        <div class="w-50 d-flex align-items-center justify-content-center">
+                        <button class="excel-btn green"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </div>
+                </div>
+                <!-- Table section -->
+                <div class="table-section">
+        <div class="row table-header py-2">
+                <div class="col-2 table-title">First name</div>
+                <div class="col-2 table-title">Last name</div>
+                <div class="col-2 table-title">Grade Level</div>
+                <div class="col-3 table-title">Career Cluster Inventory</div>
+                <div class="col-3 table-title">Reality Check</div>
+        </div>
+
+        <div *ngFor="let d of data">
+                        <div class="row table-data dark py-2">
+                                        <div class="col-2">{{d.FirstName}}</div>
+                                        <div class="col-2">{{d.LastName}}</div>
+                                        <div class="col-2">{{d.Grade}}</div>
+                                        <div class="col-3 ">{{d.Career}}</div>
+                                        <div class="col-3 ">{{d.RealityCheck}}</div>
+                        </div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        <div class="row table-data dark py-2">
+                        <div class="col-2">ansj</div>
+                        <div class="col-2">asas</div>
+                        <div class="col-2">6</div>
+                        <div class="col-3 ">absdh</div>
+                        <div class="col-3 ">sbha</div>
+        </div>
+        </div>
+                    
+</div>
+    
