@@ -1,0 +1,88 @@
+ 
+ <nav class="sidebar p-1 pr-0" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+   <!-- Filters & Plans Names Section -->
+   <div class="list-group p-2">
+       <!-- Filter Section -->
+        <div class="d-flex align-items-center list-group-item p-1 w-100 border-bottom">
+           <div class="w-50">
+               <p class="m-0 d-flex active-plan-text">
+                   <span class="d-flex align-items-center">
+                       <i class="fa fa-address-book mx-1"></i>
+                   </span>
+                   <span class="d-flex align-items-center mr-4">Active Plans</span>
+               </p>
+           </div>
+           <div class="filter-section w-100">
+               <form >
+                   <div class="input-group">
+                       <input type="text" class="form-control search-bar" placeholder="Search" name="search" [(ngModel)]="queryString">
+                       <div class="input-group-btn d-flex align-items-center">
+                       <button class="btn btn-default p-0 d-flex justify-content-center search-icon-button" type="submit"><i class="fa fa-search mx-1" aria-hidden="true"></i></button>
+                       </div>
+                   </div>
+               </form>
+           </div>
+       </div>
+ 
+ <div class="plans-list py-1">
+
+
+
+        <div class="plan-names" *ngFor = "let item of allItems">
+               <p>
+                   {{item.PlanTitle}}
+                 </p>
+           </div>
+       </div>
+   </div>
+
+       <!-- Portfolio Activities -->
+       <div class="list-group px-2 py-1 my-1">
+       <div class="d-flex align-items-center list-group-item w-100 p-0 my-1 activity-section">
+               <div class="w-100">
+                       <div class="navbar-header d-flex align-items-center w-100 py-1">
+                               <a class="navbar-brand w-100 mx-2">Portfolio Activities</a>
+                           <button type="button" class="navbar-toggle d-flex align-items-center mx-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><i class="fa fa-caret-up m-0" aria-hidden="true"></i>
+                           </button>
+                       </div>
+                       <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+                           <ul class="nav navbar-nav navbar-right" *ngFor="let item of displayNameAll">
+                                   <!-- <a data-toggle="collapse" data-target=".in" class="d-flex align-items-center p-1" >  -->
+
+
+                                       <li>
+                                           <input  (change)="updateCheckedPlanItems(item,$event)" type="checkbox"  name="games"   value="{{item.ItemID}}" />
+                                           <span class="game-text">{{item.DisplayName}}</span>
+                                         </li>
+
+                           </ul>
+                       </div>
+               </div>
+       </div>
+        <!-- Grade Level -->
+       <div class="d-flex align-items-center list-group-item w-100 p-0 my-1 activity-section">
+               <div class="w-100">
+                       <div class="navbar-header d-flex align-items-center w-100 py-1">
+                               <a class="navbar-brand w-100 mx-2">Grade Level</a>
+                           <button type="button" class="navbar-toggle d-flex align-items-center mx-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"><i class="fa fa-caret-up m-0" aria-hidden="true"></i>
+                           </button>
+                       </div>
+                       <div class="navbar-collapse" id="bs-example-navbar-collapse-2">
+                           <ul class="nav navbar-nav navbar-right" *ngFor="let grades of gradesListAll">
+                               <!-- <a data-toggle="collapse" data-target=".in" class="d-flex align-items-center p-1" >  -->
+
+
+                                   <li>
+                                       <input  (change)="updateCheckedGrades(grades,$event)" type="checkbox"  name="games"   value="{{grades}}" />
+                                       <span class="game-text">{{grades}}</span>
+                                     </li>
+
+                       </ul>
+                       </div>
+               </div>
+       </div>
+   </div>
+
+
+
+</nav>
