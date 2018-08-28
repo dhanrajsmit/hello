@@ -15,7 +15,7 @@
            <div class="filter-section w-100">
                <form >
                    <div class="input-group">
-                       <input type="text" class="form-control search-bar" placeholder="Search" name="search" [(ngModel)]="queryString">
+                       <input type="text" class="form-control search-bar" placeholder="Search" name="search" [(ngModel)]="queryString" (ngModelChange)="searchString()">{{searchField}}>
                        <div class="input-group-btn d-flex align-items-center">
                        <button class="btn btn-default p-0 d-flex justify-content-center search-icon-button" type="submit"><i class="fa fa-search mx-1" aria-hidden="true"></i></button>
                        </div>
@@ -28,7 +28,7 @@
 
 
 
-        <div class="plan-names" *ngFor = "let item of allItems">
+        <div class="plan-names" *ngFor = "let item of allItems |  filterdata: 'PlanTitle' : queryString">
                <p>
                    {{item.PlanTitle}}
                  </p>
