@@ -71,10 +71,13 @@ export class SidebarComponent {
               var PlanItemsList ={
                   ItemID: '',
                   DisplayName: '',
+                  CurrentGradeLevel: '',
                };
 
                PlanItemsList.ItemID=item.ItemID;
                PlanItemsList.DisplayName=item.DisplayName;
+               PlanItemsList.CurrentGradeLevel=item.CurrentGradeLevel;
+
              this.displayNameAll.push(PlanItemsList);
             })
            }
@@ -101,9 +104,14 @@ export class SidebarComponent {
                 }),1);  
                }
                
-            let obj={dataObj:this.checkedItemsList,isChecked:event.target.checked}
+            let obj={dataObj:this.checkedItemsList,isChecked:event.target.checked};
+            // alert("updateCheckedPlanItems");
+            try{
                   this.dashboardApiService.dashBoardFilterObserver.next(obj);
-               
+            }
+            catch(e){
+                alert("updateCheckedPlans exception "+e.message);
+            }
             //   console.log("hiii"+JSON.stringify(item) +"event trigered ="+JSON.stringify(event.target.checked));
            }
 
@@ -112,16 +120,17 @@ export class SidebarComponent {
                 this.checkedItemsList.push(Id);
                }else{
                 
-                  this.checkedItemsList.splice(this.checkedItemsList.findIndex((findItem)=>{
-                    console.log("findItem "+JSON.stringify(findItem )+" Item "+JSON.stringify(Id))
-                    if(findItem.CurrentGradeLevel===Id.CurrentGradeLevel){
-                        return findItem;
+                  this.checkedItemsList.splice(this.checkedItemsList.findIndex((findId)=>{
+                    console.log("findId "+JSON.stringify(findId )+" Id "+JSON.stringify(Id))
+                    if(findId===Id){
+                        return findId;
                     }
                 }),1);  
                }
                
-            let obj={dataObj:this.checkedItemsList,isChecked:event.target.checked}
-                  this.dashboardApiService.dashBoardFilterObserver.next(obj);           }
+            let obj2={dataObj1:this.checkedItemsList,isChecked:event.target.checked}
+                  this.dashboardApiService.dashBoardFilterGradeObserver.next(obj2);           
+                }
 
 
 

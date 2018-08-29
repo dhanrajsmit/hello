@@ -61,9 +61,10 @@ export class DashboardComponent implements OnInit {
            this.setPage(1);
 
        });
-
+       let allitemsTemp1=[];
        this.dashBoarApiService.dashBoardFilterObservable.subscribe((resultObj:any)=>{
-          // alert("DashboardComponent resultObj = "+JSON.stringify(this.allitemsTemp.length));
+          // alert("DashboardComponent resultObj = "+JSON.stringify(resultObj));
+
           let planItemsArr:any[]= resultObj.dataObj;
           this.allitemsTemp=[];
           planItemsArr.forEach(planItem=>{
@@ -78,30 +79,42 @@ export class DashboardComponent implements OnInit {
           this.allitemsPDF = this.allitemsTemp;
          }
          else{
+          if(!resultObj.isChecked)
            this.allitemsTemp=this.allItems;
          }
+         allitemsTemp1 = this.allitemsTemp;
           // alert("filter allItempItems "+JSON.stringify(this.allitemsTemp.length));
           this.setPage(1);
         //  },10);
        });
 
-       this.dashBoarApiService.dashBoardFilterObservable.subscribe((resultObj:any)=>{
-        // alert("DashboardComponent resultObj = "+JSON.stringify(this.allitemsTemp.length));
-        let planItemsArr:any[]= resultObj.dataObj;
+       this.dashBoarApiService.dashBoardFilterGradeObservable.subscribe((resultObj2:any)=>{
+        let gradesArr:any[]= resultObj2.dataObj1;
+
+     
         this.allitemsTemp=[];
-        planItemsArr.forEach(planItem=>{
-          this.allItems.forEach(Id=>{
-            if(Id.DisplayName === planItem.DisplayName){
-            this.allitemsTemp.push(Id);     
+
+        gradesArr.forEach(grade=>{
+          // alert("DashboardComponent this.allItems = "+JSON.stringify(this.allItems  ));
+
+          allitemsTemp1.forEach(item=>{
+            // alert("DashboardComponent item= "+item.CurrentGradeLevel+" grade "+grade);
+            // alert("DashboardComponent item= "+item.CurrentGradeLevel+" grade "+grade);
+            if(item.CurrentGradeLevel+"" === grade+""){
+                          
+
+            this.allitemsTemp.push(item);     
             }
           })
-        })
+        }) 
+        // alert("gradesFilter allItemTemp = "+JSON.stringify(this.allitemsTemp))
        if(this.allitemsTemp.length>0){
       //  setTimeout(()=>{
         this.allitemsPDF = this.allitemsTemp;
        }
        else{
-         this.allitemsTemp=this.allItems;
+         if(!resultObj2.isChecked)
+         this.allitemsTemp=allitemsTemp1;
        }
         // alert("filter allItempItems "+JSON.stringify(this.allitemsTemp.length));
         this.setPage(1);

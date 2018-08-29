@@ -12,10 +12,15 @@ export class DashboardapiService {
   
   public dashBoardFilterObservable: Observable<Object>;
   public dashBoardFilterObserver:Observer<Object>;
+  public dashBoardFilterGradeObservable: Observable<Object>;
+  public dashBoardFilterGradeObserver:Observer<Object>;
   constructor(private http:Http) {
     this.dashBoardFilterObservable= new Observable(observer=>{
        this.dashBoardFilterObserver = observer;
      });
+     this.dashBoardFilterGradeObservable=new Observable((observer)=>{
+       this.dashBoardFilterGradeObserver =observer;
+     })
    }
 
    public dashBoardApiHandler(){
