@@ -5,13 +5,6 @@
     .border-right{
         border:1px solid #ccc;
     }
-    .sub-setions{
-        border-right: 1px solid #ccc;
-        box-shadow: 0 0 5px -1px #ccc;
-        &:nth-last-child(1){
-            border-right: 0px solid #ccc;
-        }
-    }
     .table-section-list{
         background-color: #e7e7e7;
         font-size: 14px;
@@ -61,7 +54,8 @@
                 .pagination{
                     border:1px solid #909090;
                     align-items: center;
-                    .page-item{
+                    .page-item , .disabled{
+                        cursor: pointer;
                         .page-link{
                             background-color: #e7e7e7;
                             font-size: 0.85rem;
@@ -76,10 +70,12 @@
                     
                     }   
                     li{
-                        padding: 0 1px;
+                        padding: 0 3px;
                         border-right: 1px solid #ccc;
                         width: 100%;
                         text-align: center;
+                        font-size: 0.7rem;
+                        cursor: pointer;
                         &:nth-last-child(1){
                             border-right: 0px solid;
                         } 
@@ -99,6 +95,8 @@
         float: right;
         background-color: transparent;
         color: #007db1;
+        outline: 0;
+        cursor: pointer;
     }
 }
 
@@ -121,7 +119,8 @@
                 border-radius: 50%;
                 border:2px solid #fff;
                 box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.2);
-                padding: 5px 10px;
+                padding: 5px;
+                margin: 0px 5px;
                 .fa{
                     color:#fff;
                 }
@@ -154,5 +153,72 @@
                 background-color: #eceaeb;
             }
         }
-    }     
+    } 
+    .activities-blog{
+        font-size: 0.8rem;
+    }    
 }
+
+
+/***  progress bar start  ***/
+.progress--circle {
+    position: relative;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color:orange;
+    }
+  }
+  
+  .progress__number {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    line-height: 1;
+    margin-top: -0.75rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #000;
+  }
+  
+   $step: 1;
+   $loops: round(100 / $step);
+   $increment: 360 / $loops;
+   $half: round($loops / 2);
+   @for $i from 0 through $loops {
+     .progress--bar[progress=" #{$i * $step}%"]:after {
+       width: $i  $step  1%;
+     }
+     .progress--circle[progress=" #{$i * $step}%"]:after {
+       @if $i < $half {
+         $nextDeg: 90deg + ($increment * $i);
+         background-image: linear-gradient(90deg, grey 50%, transparent 50%, transparent), linear-gradient($nextDeg,orange 50%, grey 50%, grey);
+       }
+       @else {
+         $nextDeg: -90deg + ($increment * ($i - $half));
+         background-image: linear-gradient($nextDeg,orange 50%, transparent 50%, transparent), linear-gradient(270deg,orange 50%, grey 50%, grey);
+       }
+     }
+   }
+

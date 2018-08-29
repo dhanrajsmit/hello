@@ -15,7 +15,7 @@
            <div class="filter-section w-100">
                <form >
                    <div class="input-group">
-                       <input type="text" class="form-control search-bar" placeholder="Search" name="search" [(ngModel)]="queryString" (ngModelChange)="searchString()">{{searchField}}>
+                       <input type="text" class="form-control search-bar" placeholder="Search" name="search" [(ngModel)]="queryString" (ngModelChange)="searchString()">{{searchField}}
                        <div class="input-group-btn d-flex align-items-center">
                        <button class="btn btn-default p-0 d-flex justify-content-center search-icon-button" type="submit"><i class="fa fa-search mx-1" aria-hidden="true"></i></button>
                        </div>
@@ -24,18 +24,12 @@
            </div>
        </div>
  
- <div class="plans-list py-1">
-
-
-
+ <div class="plans-list py-1 px-2">
         <div class="plan-names" *ngFor = "let item of allItems |  filterdata: 'PlanTitle' : queryString">
-               <p>
-                   {{item.PlanTitle}}
-                 </p>
+               <p class="my-2">{{item.PlanTitle}}</p>
            </div>
        </div>
    </div>
-
        <!-- Portfolio Activities -->
        <div class="list-group px-2 py-1 my-1">
        <div class="d-flex align-items-center list-group-item w-100 p-0 my-1 activity-section">
@@ -45,16 +39,13 @@
                            <button type="button" class="navbar-toggle d-flex align-items-center mx-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><i class="fa fa-caret-up m-0" aria-hidden="true"></i>
                            </button>
                        </div>
-                       <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+                       <div class="navbar-collapse px-2 py-1" id="bs-example-navbar-collapse-1">
                            <ul class="nav navbar-nav navbar-right" *ngFor="let item of displayNameAll">
                                    <!-- <a data-toggle="collapse" data-target=".in" class="d-flex align-items-center p-1" >  -->
-
-
-                                       <li>
+                                       <li class="d-flex align-items-center my-1">
                                            <input  (change)="updateCheckedPlanItems(item,$event)" type="checkbox"  name="games"   value="{{item.ItemID}}" />
-                                           <span class="game-text">{{item.DisplayName}}</span>
-                                         </li>
-
+                                           <span class="game-text ml-2">{{item.DisplayName}}</span>
+                                        </li>
                            </ul>
                        </div>
                </div>
@@ -67,14 +58,12 @@
                            <button type="button" class="navbar-toggle d-flex align-items-center mx-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"><i class="fa fa-caret-up m-0" aria-hidden="true"></i>
                            </button>
                        </div>
-                       <div class="navbar-collapse" id="bs-example-navbar-collapse-2">
+                       <div class="navbar-collapse px-2 py-1" id="bs-example-navbar-collapse-2">
                            <ul class="nav navbar-nav navbar-right" *ngFor="let grades of gradesListAll">
                                <!-- <a data-toggle="collapse" data-target=".in" class="d-flex align-items-center p-1" >  -->
-
-
-                                   <li>
+                                   <li class="d-flex align-items-center">
                                        <input  (change)="updateCheckedGrades(grades,$event)" type="checkbox"  name="games"   value="{{grades}}" />
-                                       <span class="game-text">{{grades}}</span>
+                                       <span class="game-text ml-2">{{grades}}</span>
                                      </li>
 
                        </ul>

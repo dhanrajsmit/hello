@@ -62,7 +62,52 @@ export class DashboardComponent implements OnInit {
 
        });
 
+       this.dashBoarApiService.dashBoardFilterObservable.subscribe((resultObj:any)=>{
+          // alert("DashboardComponent resultObj = "+JSON.stringify(this.allitemsTemp.length));
+          let planItemsArr:any[]= resultObj.dataObj;
+          this.allitemsTemp=[];
+          planItemsArr.forEach(planItem=>{
+            this.allItems.forEach(item=>{
+              if(item.DisplayName === planItem.DisplayName){
+              this.allitemsTemp.push(item);     
+              }
+            })
+          })
+         if(this.allitemsTemp.length>0){
+        //  setTimeout(()=>{
+          this.allitemsPDF = this.allitemsTemp;
+         }
+         else{
+           this.allitemsTemp=this.allItems;
+         }
+          // alert("filter allItempItems "+JSON.stringify(this.allitemsTemp.length));
+          this.setPage(1);
+        //  },10);
+       });
 
+       this.dashBoarApiService.dashBoardFilterObservable.subscribe((resultObj:any)=>{
+        // alert("DashboardComponent resultObj = "+JSON.stringify(this.allitemsTemp.length));
+        let planItemsArr:any[]= resultObj.dataObj;
+        this.allitemsTemp=[];
+        planItemsArr.forEach(planItem=>{
+          this.allItems.forEach(Id=>{
+            if(Id.DisplayName === planItem.DisplayName){
+            this.allitemsTemp.push(Id);     
+            }
+          })
+        })
+       if(this.allitemsTemp.length>0){
+      //  setTimeout(()=>{
+        this.allitemsPDF = this.allitemsTemp;
+       }
+       else{
+         this.allitemsTemp=this.allItems;
+       }
+        // alert("filter allItempItems "+JSON.stringify(this.allitemsTemp.length));
+        this.setPage(1);
+      //  },10);
+     });
+ 
    }
 
    defaultPlanProgressReport() {

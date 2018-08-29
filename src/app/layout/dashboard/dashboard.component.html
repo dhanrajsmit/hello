@@ -2,50 +2,60 @@
 <div class="dashboard-section">
         <!-- Plan View Section -->
         <p class="text-muted plan-text">Current Plan:  <span class="text-primary font-weight-bold">Arizona HS Report</span></p>
-        <div class="container card"> 
-                        <div class="row">     
-                          <div class="col-lg-4 col-md-4 p-0  sub-setions">
-                                <div class="text-center p-2">
-                                <div>
-                                <p class="my-1">Overall Progress</p>
-                                <div class="canvas-chart my-3">
-                            
-                                </div>
-                                <p class="my-1">39 of 229</p>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 p-0   sub-setions">
-                                <div class="text-center  p-2">
-                                <div>
-                                <p class="my-1">Overall Progress</p>
-                                <div class="canvas-chart my-3">
-                            
-                                </div>
-                                <p class="my-1">39 of 229</p>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 p-0   sub-setions">
-                                <div class="text-center  p-2">
-                                <div>
-                                <p class="my-1">Overall Progress</p>
-                                <div class="canvas-chart my-3">
-                            
-                                </div>
-                                <p class="my-1">39 of 229</p>
-                                </div>
-                                </div> 
-                        </div>
-                      </div>
+        <div class="container card d-flex align-items-center">                         
+              <div class="row w-100">
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <p class="text-center">Overall Progress </p>
+                    <div class="progress--circle" progress=" 72%">
+                        <div class="progress__number">72%</div>                                         
+                    </div>
+                    <p class="text-center">39 of 229</p>
                 </div>
+                <div class="col-lg-4 col-md-6 col-xs-12 d-flex  justify-content-center">
+                    <ul class="list-unstyled activities-blog m-0">
+                        <li class="my-2">
+                            <span>Career Cluster Inventory Jr</span>
+                        </li>
+                        <li class="my-2">
+                            <span>IDEAS</span>
+                        </li>
+                        <li class="my-2">
+                            <span>Interest Profiler Short Form</span>
+                        </li>
+                        <li class="my-2">
+                            <span>Learning Style Survey</span>
+                        </li>
+                        <li class="my-2">
+                            <span>Occupation Sort</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12 d-flex  justify-content-center">
+                        <ul class="list-unstyled activities-blog m-0">
+                            <li class="my-2">
+                                <span>Work Importance Locator</span>
+                            </li>
+                            <li class="my-2">
+                                <span>Occupations</span>
+                            </li>
+                            <li class="my-2">
+                                <span>Custom Item Test</span>
+                            </li>
+                            <li class="my-2">
+                                <span>Custom Item Test reflection</span>
+                            </li>
+                        </ul>
+                    </div>
+              </div>           
+                        
+        </div>
 
                 <div class="table-section-list">
                 <div class="col-12">
         <!-- Table & Page Navigation Section -->
                 <div class="table-pagenav-section my-2 row  px-2">
                 <!-- Search Section -->
-                <div class="table-search-section  col-3 col-md-3 ">
+                <div class="table-search-section  col-3 col-md-3 d-flex align-items-center">
                 <form class="d-flex align-items-center">
                 <button type="submit" class="search-icon" ><i class="fa fa-search"></i></button>
                 <input type="text" placeholder="Search.." name="search" class="search-bar w-100" [(ngModel)]="queryString" (ngModelChange)="searchString()">{{searchField}}                
@@ -54,7 +64,7 @@
                 <!-- page navigation -->
                  <div class="page-navigation d-flex align-items-center justify-content-center col-md-5  p-0">
                         <nav aria-label="..." class="pagenation-section  w-100">
-                                   <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                                   <ul *ngIf="pager.pages && pager.pages.length" class="pagination m-0">
                 <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
                     <a class="page-link" (click)="setPage(1)">First</a>
                 </li>
@@ -74,7 +84,7 @@
                          </nav>
                 </div>
                 <!-- page content -->     
-                <div class="page-content-show col-2 col-md-2 ">
+                <div class="page-content-show col-2 col-md-2 d-flex align-items-center justify-content-center">
                 <div class="dropdown size-drop-down">Size: 
                         <select class="list-dp"   [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChanged($event)">
                        <option *ngFor="let opt of limitOptions" >{{opt.key}}</option>
@@ -84,11 +94,11 @@
                 <!-- PDF & Excel Buttons -->
                 <div class="col-1 common-button d-flex justify-content-end col-md-2 p-0">
                         <div class="">
-                        <button class="pdf-btn red"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        <button class="pdf-btn red h-100"><img src="./assets/images/pdf.png" alt="pdf-icon">
                         </button>
                         </div>
                         <div class="">
-                        <button class="excel-btn green" (click)="exportAsXLSX()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        <button class="excel-btn green h-100" (click)="exportAsXLSX()"><img src="./assets/images/exel.png" alt="excel-icon">
                         </button>
                         </div>
                 </div>

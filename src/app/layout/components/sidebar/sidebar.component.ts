@@ -1,8 +1,10 @@
+import { trigger } from '@angular/animations';
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { DashboardapiService} from '../../../shared/services/dashboardapiservice/dashboardapi.service';
+import { find } from 'cfb/types';
 @Component({
    selector: 'app-sidebar',
    templateUrl: './sidebar.component.html',
@@ -18,7 +20,9 @@ export class SidebarComponent {
    gradesList : any[];
    gradesListAll : any[];
 
-   displayNameList : any[]
+   displayNameList : any[];
+ 
+   checkedItemsList:any[]=[];
    constructor(private http: Http, private translate: TranslateService, public router: Router,public dashboardApiService : DashboardapiService) {
    }
 
@@ -85,12 +89,39 @@ export class SidebarComponent {
 
 
            updateCheckedPlanItems(item,event) {
-              alert("hiii"+item.ItemID +"event"+event);
+               if(event.target.checked){
+                this.checkedItemsList.push(item);
+               }else{
+                
+                  this.checkedItemsList.splice(this.checkedItemsList.findIndex((findItem)=>{
+                    console.log("findItem "+JSON.stringify(findItem )+" Item "+JSON.stringify(item))
+                    if(findItem.DisplayName===item.DisplayName){
+                        return findItem;
+                    }
+                }),1);  
+               }
+               
+            let obj={dataObj:this.checkedItemsList,isChecked:event.target.checked}
+                  this.dashboardApiService.dashBoardFilterObserver.next(obj);
+               
+            //   console.log("hiii"+JSON.stringify(item) +"event trigered ="+JSON.stringify(event.target.checked));
            }
 
            updateCheckedGrades(Id,event){
-               alert("Grades"+Id +"event"+event);
-           }
+            if(event.target.checked){
+                this.checkedItemsList.push(Id);
+               }else{
+                
+                  this.checkedItemsList.splice(this.checkedItemsList.findIndex((findItem)=>{
+                    console.log("findItem "+JSON.stringify(findItem )+" Item "+JSON.stringify(Id))
+                    if(findItem.CurrentGradeLevel===Id.CurrentGradeLevel){
+                        return findItem;
+                    }
+                }),1);  
+               }
+               
+            let obj={dataObj:this.checkedItemsList,isChecked:event.target.checked}
+                  this.dashboardApiService.dashBoardFilterObserver.next(obj);           }
 
 
 
