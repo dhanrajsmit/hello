@@ -25,7 +25,7 @@
        </div>
  
  <div class="plans-list py-1 px-2">
-        <div class="plan-names" *ngFor = "let item of allItems |  filterdata: 'PlanTitle' : queryString">
+        <div class="plan-names" [ngClass]="{'active': selectedItem == item}" (click)="clickFilter(item)" *ngFor = "let item of allItems |  filterdata: 'PlanTitle' : queryString">
                <p class="my-2">{{item.PlanTitle}}</p>
            </div>
        </div>

@@ -11,6 +11,7 @@ import { find } from 'cfb/types';
    styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+   @Output() onFilter = new EventEmitter<boolean>();
 
    @Output() collapsedEvent = new EventEmitter<boolean>();
    itemList: any[];
@@ -23,6 +24,7 @@ export class SidebarComponent {
    displayNameList : any[];
  
    checkedItemsList:any[]=[];
+    selectedItem: any;
    constructor(private http: Http, private translate: TranslateService, public router: Router,public dashboardApiService : DashboardapiService) {
    }
 
@@ -37,10 +39,10 @@ export class SidebarComponent {
 
 
            this.dashboardApiService.dashBoardApiHandler().subscribe(data => {
-               console.log(data);
+               //console.log(data);
                this.displayNameAll = data.json().Result.defaultPlanProgressReport.PlanItemsList;
 
-              console.log("check------>"+this.displayNameAll);
+             // console.log("check------>"+this.displayNameAll);
            });
 
 
@@ -48,7 +50,7 @@ export class SidebarComponent {
 
           this.gradesListAll = data.json().Result.defaultPlanProgressReport.GradesList;
 
-              console.log("check------>"+this.gradesListAll);
+              //console.log("check------>"+this.gradesListAll);
            });
 
 
@@ -134,9 +136,13 @@ export class SidebarComponent {
 
 
 
-
-
-}
+                clickFilter(item):void {
+                        //  this.onFilter.emit('Register click');
+                        
+                        this.dashboardApiService.filter(item);
+                    }
+                }
+                
 
 
 

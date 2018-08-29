@@ -13,7 +13,14 @@ import {ExcelService} from '../../../app/shared/services/ExcelService/excel.serv
 })
 
 export class DashboardComponent implements OnInit {
-   constructor(private http: Http, private pagerService: PagerService,public dashBoarApiService :DashboardapiService,private excelService:ExcelService) { }
+  planTitle;
+   constructor(private http: Http, private pagerService: PagerService,public dashBoarApiService :DashboardapiService,private excelService:ExcelService) { 
+
+    this.dashBoarApiService.listen().subscribe((m:any) => {
+      console.log(m);
+      this.onFilterClick(m);
+  })
+   }
    queryString: any;
    pageSize: number;
    currentPage: number;
@@ -34,9 +41,10 @@ export class DashboardComponent implements OnInit {
 
    // array of all items to be paged
    allItems: any[];
+   allPlans: any[];
 
    allitemsTemp = [];
-
+   allPlansTemp =[];
    allitemsPDF = [];
    Pdfdata = [];
 
@@ -50,7 +58,7 @@ export class DashboardComponent implements OnInit {
    ngOnInit() {
         this.pageSize = 10;
         this.dashBoarApiService.dashBoardApiHandler().subscribe(data => {
-           console.log(data);
+           // console.log(data);
            this.allItems = data.json().Result.defaultPlanProgressReport.UserActivityItemCompletionStatusList;
 
           //console.log("check------>"+this.allItems)
@@ -61,6 +69,15 @@ export class DashboardComponent implements OnInit {
            this.setPage(1);
 
        });
+
+       this.dashBoarApiService.dashBoardApiHandler().subscribe(data => {
+        // console.log(data);
+        this.allPlans = data.json().Result.SiteSpecificPlans[0].SitePlans;
+
+        this.allPlansTemp = this.allPlans;
+
+       });
+
        let allitemsTemp1=[];
        this.dashBoarApiService.dashBoardFilterObservable.subscribe((resultObj:any)=>{
           // alert("DashboardComponent resultObj = "+JSON.stringify(resultObj));
@@ -236,7 +253,14 @@ console.log("this.allitemsPDF------>"+JSON.stringify(this.allitemsPDF));
 
   }
 
+  
 
+
+  onFilterClick(itemObj) {
+    this.planTitle=itemObj.PlanTitle;
+    // alert("onFilterClick = "+JSON.stringify(itemObj));
+    console.log('Fire onFilterClick: ', event);
+}
 
 
 

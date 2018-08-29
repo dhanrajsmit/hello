@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
 
 import {Observable} from 'rxjs/Observable'
 import { Observer } from 'rxjs';
@@ -37,4 +38,15 @@ export class DashboardapiService {
 
 
    }
+
+   private _listners = new Subject<any>();
+
+   listen(): Observable<any> {
+      return this._listners.asObservable();
+   }
+
+   filter(filterBy: Object) {
+      this._listners.next(filterBy);
+   }
+
 }
