@@ -7,17 +7,17 @@
                 <div class="col-lg-4 col-md-6 col-xs-12">
                     <p class="text-center">Overall Progress </p>
                     <div class="progress--circle" progress=" 72%">
-                        <div class="progress__number">72%</div>                                         
+                        <div class="progress__number">{{percentage+"%"}}</div>                                         
                     </div>
                     <p class="text-center">39 of 229</p>
                 </div>
                 <div class="col-lg-4 col-md-6 col-xs-12 d-flex  justify-content-center">
                     <ul class="list-unstyled activities-blog m-0">
                         <li class="my-2">
-                            <span>Career Cluster Inventory Jr</span>
+                            <span (click)="filterPercentageBasedOnCategory('Career Cluster Inventory Jr')">Career Cluster Inventory Jr</span>
                         </li>
                         <li class="my-2">
-                            <span>IDEAS</span>
+                            <span (click)="filterPercentageBasedOnCategory('IDEAS')">IDEAS</span>
                         </li>
                         <li class="my-2">
                             <span>Interest Profiler Short Form</span>

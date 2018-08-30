@@ -14,6 +14,7 @@ import {ExcelService} from '../../../app/shared/services/ExcelService/excel.serv
 
 export class DashboardComponent implements OnInit {
   planTitle;
+  public percentage : any; 
    constructor(private http: Http, private pagerService: PagerService,public dashBoarApiService :DashboardapiService,private excelService:ExcelService) { 
 
     this.dashBoarApiService.listen().subscribe((m:any) => {
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnInit {
       this.onFilterClick(m);
   })
    }
+    
    queryString: any;
    pageSize: number;
    currentPage: number;
@@ -66,9 +68,10 @@ export class DashboardComponent implements OnInit {
            this.allitemsTemp = this.allItems;
            this.allitemsPDF = this.allItems;
 
+           this.calculatePercentage();
            this.setPage(1);
-
        });
+
 
        this.dashBoarApiService.dashBoardApiHandler().subscribe(data => {
         // console.log(data);
@@ -140,6 +143,29 @@ export class DashboardComponent implements OnInit {
  
    }
 
+   calculatePercentage()
+   {
+     var sum = 0;
+     var count = 0;
+     this.allItems.forEach(element => {
+       sum = sum + element.ActivityCompleted;
+       count = count+1;
+     });
+     this.percentage = Math.round(sum*100/count);
+   }
+
+   filterPercentageBasedOnCategory(category){
+     var sum = 0;
+     var count = 0;
+     this.allItems.forEach(element => {
+       if(element.DisplayName == category){
+        sum = sum + element.ActivityCompleted;
+        count = count+1;
+       }
+     });
+     this.percentage = Math.round(sum*100/count);
+   }
+   
    defaultPlanProgressReport() {
 
     // console.log(this.allItems);
