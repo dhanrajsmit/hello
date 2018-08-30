@@ -3,49 +3,33 @@
         <!-- Plan View Section -->
         <p class="text-muted plan-text">Current Plan:  <span class="text-primary font-weight-bold">{{planTitle}}</span></p>
         <div class="container card d-flex align-items-center">                         
-              <div class="row w-100">
-                <div class="col-lg-4 col-md-6 col-xs-12">
+              <div class="row w-100 d-flex align-items-center">
+                <div class="col-lg-3 col-md-3 col-xs-12">
                     <p class="text-center">Overall Progress </p>
-                    <div class="progress--circle" progress=" 72%">
+                    <div class="progress--circle" [attr.progress]='" "+percentage+"%"'>
                         <div class="progress__number">{{percentage+"%"}}</div>                                         
                     </div>
                     <p class="text-center">39 of 229</p>
                 </div>
-                <div class="col-lg-4 col-md-6 col-xs-12 d-flex  justify-content-center">
+                <div class="col-lg-8 col-md-8 col-xs-12 ">
+                <div class="row">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="progress--circle" [attr.progress]='" "+percentage+"%"'>
+                        <div class="progress__number">{{catPercentage+"%"}}</div>                                         
+                    </div>
+                    <p class="text-center m-0" >{{displayName}}</p>
+                </div>
+                <div class="col-lg-8 col-md-8 col-xs-12 d-flex  justify-content-center">
                     <ul class="list-unstyled activities-blog m-0">
-                        <li class="my-2">
-                            <span (click)="filterPercentageBasedOnCategory('Career Cluster Inventory Jr')">Career Cluster Inventory Jr</span>
+                        <li class="my-2" [ngClass]="{'active': selectedItem == item}" (click)="clickActivity(item);filterPercentageBasedOnCategory()" *ngFor = "let item of displayNameAll |  filterdata: 'displayName' : queryString">
+                            <span  >{{item.DisplayName}}</span>
                         </li>
-                        <li class="my-2">
-                            <span (click)="filterPercentageBasedOnCategory('IDEAS')">IDEAS</span>
-                        </li>
-                        <li class="my-2">
-                            <span>Interest Profiler Short Form</span>
-                        </li>
-                        <li class="my-2">
-                            <span>Learning Style Survey</span>
-                        </li>
-                        <li class="my-2">
-                            <span>Occupation Sort</span>
-                        </li>
+                       
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 col-xs-12 d-flex  justify-content-center">
-                        <ul class="list-unstyled activities-blog m-0">
-                            <li class="my-2">
-                                <span>Work Importance Locator</span>
-                            </li>
-                            <li class="my-2">
-                                <span>Occupations</span>
-                            </li>
-                            <li class="my-2">
-                                <span>Custom Item Test</span>
-                            </li>
-                            <li class="my-2">
-                                <span>Custom Item Test reflection</span>
-                            </li>
-                        </ul>
-                    </div>
+                </div>
+                </div>
+                
               </div>           
                         
         </div>
@@ -94,7 +78,7 @@
                 <!-- PDF & Excel Buttons -->
                 <div class="col-1 common-button d-flex justify-content-end col-md-2 p-0">
                         <div class="">
-                        <button class="pdf-btn red h-100"><img src="./assets/images/pdf.png" alt="pdf-icon">
+                        <button class="pdf-btn red h-100" (click)="exportAsPDF()"><img src="./assets/images/pdf.png" alt="pdf-icon">
                         </button>
                         </div>
                         <div class="">

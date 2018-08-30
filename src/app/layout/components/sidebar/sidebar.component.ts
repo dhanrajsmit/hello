@@ -66,7 +66,7 @@ export class SidebarComponent {
            SitePlans.PlanTitle=item.PlanTitle;
            this.itemList.push(SitePlans);
         })
-       };
+       }
 
        PlanItemsList() {
             this.allItems.map((item) =>{
