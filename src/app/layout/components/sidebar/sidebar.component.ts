@@ -136,7 +136,7 @@ export class SidebarComponent {
 
 
 
-                clickFilter(item):void {
+                planFilter(item):void {
                         //  this.onFilter.emit('Register click');
                         
                         this.dashboardApiService.filter(item);

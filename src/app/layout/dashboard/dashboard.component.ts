@@ -318,7 +318,7 @@ console.log("this.allitemsPDF------>"+JSON.stringify(this.allitemsPDF));
 }
 
 
-clickActivity(activityItem):void {
+  activityName(activityItem):void {
   //  this.onFilter.emit('Register click');
   this.displayName=activityItem.DisplayName;
 
