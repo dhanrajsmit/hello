@@ -19,6 +19,10 @@ export class DashboardComponent implements OnInit {
   public percentage : any; 
   rows: any[];
   columns: any[];
+  completed: number;
+  total: number;
+  activitySum: number;
+  activityCount: number;
 
    constructor(private http: Http, private pagerService: PagerService,public dashBoarApiService :DashboardapiService,private excelService:ExcelService) { 
 
@@ -167,6 +171,8 @@ export class DashboardComponent implements OnInit {
        // alert("filterPercentageBasedOnCategory sum= "+sum);
 
      this.percentage = Math.round(sum*100/count);
+     this.completed = sum;
+    this.total = count;
    }
 
    filterPercentageBasedOnCategory(){
@@ -183,6 +189,8 @@ export class DashboardComponent implements OnInit {
         //  alert("filterPercentageBasedOnCategory sum= "+sum);
 
      this.catPercentage = Math.round(sum*100/count);
+     this.activitySum=sum;
+       this.activityCount=count;
    }
   
    defaultPlanProgressReport() {

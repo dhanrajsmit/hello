@@ -4,24 +4,25 @@
         <p class="text-muted plan-text">Current Plan:  <span class="text-primary font-weight-bold">{{planTitle}}</span></p>
         <div class="container card d-flex align-items-center">                         
               <div class="row w-100 d-flex align-items-center">
-                <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
                     <p class="text-center">Overall Progress </p>
-                    <div class="progress--circle" [attr.progress]='" "+percentage+"%"'>
+                    <div class="progress--circle large" [attr.progress]='" "+percentage+"%"'>
                         <div class="progress__number">{{percentage+"%"}}</div>                                         
                     </div>
-                    <p class="text-center">39 of 229</p>
+                    <p class="text-center">{{completed}} of {{total}}</p>
                 </div>
                 <div class="col-lg-8 col-md-8 col-xs-12 ">
-                <div class="row">
-                <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="progress--circle" [attr.progress]='" "+percentage+"%"'>
+                <div class="row align-items-center ">                                       
+                <div class="col-lg-5 col-md-5 col-xs-12">  
+                        <p class="text-center m-0" >{{displayName}}</p>                                        
+                    <div class="progress--circle d-flex align-items-center" [attr.progress]='" "+percentage+"%"'>
                         <div class="progress__number">{{catPercentage+"%"}}</div>                                         
-                    </div>
-                    <p class="text-center m-0" >{{displayName}}</p>
+                    </div>   
+                    <p class="text-center m-0">{{activitySum}} of {{activityCount}}</p>                 
                 </div>
-                <div class="col-lg-8 col-md-8 col-xs-12 d-flex  justify-content-center">
-                    <ul class="list-unstyled activities-blog m-0">
-                        <li class="my-2" [ngClass]="{'active': selectedItem == item}" (click)="activityName(item);filterPercentageBasedOnCategory()" *ngFor = "let item of displayNameAll |  filterdata: 'displayName' : queryString">
+                <div class="col-lg-7 col-md-7 col-xs-12 d-flex align-items-center justify-content-center">
+                    <ul class=" activities-blog m-0">
+                        <li class="my-1" [ngClass]="{'active': selectedItem == item}" (click)="activityName(item);filterPercentageBasedOnCategory()" *ngFor = "let item of displayNameAll |  filterdata: 'displayName' : queryString">
                             <span  >{{item.DisplayName}}</span>
                         </li>
                        
@@ -39,8 +40,8 @@
         <!-- Table & Page Navigation Section -->
                 <div class="table-pagenav-section my-2 row  px-2">
                 <!-- Search Section -->
-                <div class="table-search-section  col-3 col-md-3 d-flex align-items-center">
-                <form class="d-flex align-items-center">
+                <div class="table-search-section  col-12 col-md-3 d-flex align-items-center my-1">
+                <form class="d-flex align-items-center w-100">
                 <button type="submit" class="search-icon" ><i class="fa fa-search"></i></button>
                 <input type="text" placeholder="Search.." name="search" class="search-bar w-100" [(ngModel)]="queryString" (ngModelChange)="searchString()">{{searchField}}                
                 </form>
@@ -68,15 +69,15 @@
                          </nav>
                 </div>
                 <!-- page content -->     
-                <div class="page-content-show col-2 col-md-2 d-flex align-items-center justify-content-center">
-                <div class="dropdown size-drop-down">Size: 
+                <div class="page-content-show col-6 col-md-2 d-flex align-items-center justify-content-center">
+                <div class="dropdown size-drop-down w-100">Size: 
                         <select class="list-dp"   [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChanged($event)">
                        <option *ngFor="let opt of limitOptions" >{{opt.key}}</option>
                   </select>
                 </div>
                 </div>
                 <!-- PDF & Excel Buttons -->
-                <div class="col-1 common-button d-flex justify-content-end col-md-2 p-0">
+                <div class="col-6 common-button d-flex justify-content-end col-md-2 p-0 my-1">
                         <div class="">
                         <button class="pdf-btn red h-100" (click)="exportAsPDF()"><img src="./assets/images/pdf.png" alt="pdf-icon">
                         </button>
@@ -90,13 +91,13 @@
                 </div>
                 <!-- Table section -->
 <div>
-    <div class="container">
+    <div class="m-1">
         <div class="text-center ">
 
             <!-- items being paged -->
            <table id="example" class="table table-striped  nowrap" style="width:100%">
     <thead class="table-head">
-      <tr>
+      <tr >
         <th data-hide="tablet, phone">Student Name</th>
         <th data-hide="tablet, phone">Current Grade Level</th>
         <th data-hide="tablet, phone">Display Name</th>
